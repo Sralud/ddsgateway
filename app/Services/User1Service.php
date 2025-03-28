@@ -1,11 +1,10 @@
-
-<?php 
+<?php
 
 namespace App\Services;
 
 use App\Traits\ConsumesExternalService;
 
-class User1Service{
+class User1Service {
 
     use ConsumesExternalService;
     

@@ -4,8 +4,8 @@ namespace App\Traits;
 
 use Illuminate\Http\Response;
 
-trait ApiResponser
-{
+trait ApiResponser {
+
     /**
      * Build success response
      *
@@ -15,27 +15,41 @@ trait ApiResponser
      */
     public function successResponse($data, $code = Response::HTTP_OK)
     {
-        //old code
-        //return response()->json(['data' => $data, 'site' => 2], $code);
         return response($data, $code)->header('Content-Type', 'application/json');
     }
 
-    public function validResponse($data, $code = Response::HTTP_OK){
-        return response()->json(['data' => $data], $code);
-    }
     /**
-     * Build error response
+     * Build valid response
      *
      * @param string|array $message
      * @param int $code
      * @return \Illuminate\Http\JsonResponse
      */
-    public function errorResponse($message, $code)
-    {
+
+     public function validResponse($data, $code = Response::HTTP_OK){
+        return response()->json(['data' => $data], $code);
+     }
+
+    /**
+     * Build error responses
+     *
+     * @param string|array $message
+     * @param int $code
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function errorResponse($message, $code){
         return response()->json(['error' => $message, 'code' => $code], $code);
     }
 
-    public function errorMessage($message, $code){
+    /**
+     * Build error responses
+     *
+     * @param string|array $message
+     * @param int $code
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+     public function errorMessage($message, $code){
         return response($message, $code)->header('Content-Type', 'application/json');
     }
 }

@@ -2,41 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-//use App\Models\User;
-use App\Traits\ApiResponser;
-use DB;
-use App\Services\User1Service;
+use Illuminate\Http\Response;        // Response Components
+use App\Traits\ApiResponser;        // <-- use to standardize our code for api response
+use Illuminate\Http\Request;        // <-- handling http request in lumen
+use App\Services\User2Service;      // user2 Services
 
-Class UserController extends Controller {
-    private $request;
-    public function __construct(Request $request){
-        $this->request = $request;
- }
+class User2Controller extends Controller 
+{
+    // use to add your Traits ApiResponser
+    use ApiResponser;
 
-    public function index(){
-        
-    }
+    /**
+     * The service to consume the User2 Microservice
+     * @var User2Service
+     */
+    public $user2Service;
 
-    public function getUsers(){
-       
-    }
-
-    public function add(Request $request){
-        
-    }
-
-    public function show($id){
-        
-    }
-
-    public function update(Request $request, $id){
-        
-    }
-
-    public function delete($id)
+    /**
+     * Create a new controller instance
+     * @return void
+     */
+    public function __construct(User2Service $user2Service)
     {
-        
+        $this->user2Service = $user2Service;
+    }
+
+    /**
+     * Return the list of users
+     * @return Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return $this->successResponse($this->user2Service->obtainUsers2());
+    }
+
+    /**
+     * Create a new user record
+     * @param Request $request
+     * @return Illuminate\Http\Response
+     */
+    public function add(Request $request)
+    {
+        return $this->successResponse(
+            $this->user2Service->createUser2($request->all()),
+            Response::HTTP_CREATED
+        );
     }
 }

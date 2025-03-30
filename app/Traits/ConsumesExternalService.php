@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Traits;
 
 // Include the Guzzle Component Library
@@ -28,5 +27,4 @@ trait ConsumesExternalService
         // Return the response body contents
         return $response->getBody()->getContents();
     }
-
 }

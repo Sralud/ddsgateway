@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;        // Response Components
@@ -48,4 +47,6 @@ class User2Controller extends Controller
             Response::HTTP_CREATED
         );
     }
+
+    
 }

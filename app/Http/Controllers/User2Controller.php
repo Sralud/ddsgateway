@@ -35,6 +35,11 @@ class User2Controller extends Controller
         return $this->successResponse($this->user2Service->obtainUsers2());
     }
 
+    public function show($id)
+    {
+        return $this->successResponse($this->user2Service->getUser2($id));
+    }
+
     /**
      * Create a new user record
      * @param Request $request
@@ -48,5 +53,21 @@ class User2Controller extends Controller
         );
     }
 
-    
+    /**
+     * Update an existing user
+     * @return Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
+    {
+    return $this->successResponse($this->user2Service->updateUser2($request->all(),$id));
+    }
+
+    /**
+     * Remove an existing user
+     * @return Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+    return $this->successResponse($this->user2Service->deleteUser2($id));
+    }
 }

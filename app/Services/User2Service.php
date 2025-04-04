@@ -49,7 +49,7 @@ class User2Service
      * @param array $data
      * @return array
      */
-    public function updateUser2($userId, $data)
+    public function updateUser2($data, $userId)
     {
         return $this->performRequest('PUT', "/api/users/{$userId}", $data);
     }

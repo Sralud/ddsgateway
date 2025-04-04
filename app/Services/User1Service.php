@@ -14,9 +14,13 @@ class User1Service
         $this->baseUri = config('services.users1.base_uri');
     }
 
-    public function obtainUsers1()
+    public function obtainUsers1($id = null)
     {
-        return $this->performRequest('GET', '/api/users');
+        if ($id) {
+            return $this->performRequest('GET', "/api/users/{$id}");
+        } else {
+            return $this->performRequest('GET', '/api/users');
+        }
     }
 
     public function createUser1($data)

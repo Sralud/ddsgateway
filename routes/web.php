@@ -35,3 +35,7 @@ $router->group(['middleware' => 'client.credentials'], function() use ($router) 
     $router->patch('/users2/{id}', 'User2Controller@update');  // update user record
     $router->delete('/users2/{id}', 'User2Controller@delete'); // delete record
 });
+
+$router->group(['middleware' => 'auth:api'], function () use ($router) {
+    $router->get('/users/me', 'UserController@me');
+});

@@ -4,7 +4,7 @@ services:
     env: php
     plan: free
     buildCommand: "composer install"
-    startCommand: "bash start.sh"
+    startCommand: "php -S 0.0.0.0:10000 -t public"
     envVars:
       - key: APP_ENV
         value: production

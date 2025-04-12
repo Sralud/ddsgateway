@@ -25,9 +25,7 @@ trait ConsumesExternalService
         // Perform the request (method, url, form parameters, headers)
         $response = $client->request($method, $requestUrl, [
             'form_params' => $form_params,
-            'headers' => array_merge([
-                'Authorization' => $this->secret,
-            ], $headers)
+            'headers' => $headers
         ]);
 
         // Return the response body contents
